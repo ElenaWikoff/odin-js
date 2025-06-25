@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript | The Odin Project</title>
+    <title>Rock, Paper, Scissors | The Odin Project</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
 </head>
+
 <body>
-    
+    <header>
+        <h1>Rock, Paper, Scissors</h1>
+    </header>
+    <main>
+        <section class="app">
+            <button id="startGame" class="btn-primary">Start Game</button>
+            <button id="startGame" class="btn-primary">Next Round</button>
+            <div class="score">
+                <span class="number player">0</span>&nbsp;|&nbsp;<span class="number computer">0</span>
+            </div>
+            <div class="message"></div>
+            <section id="gameSpace">
+                <div class="choices player">
+                    <button class="choice rock" alt="Rock" title="Rock" value="rock">
+                        <img alt="Rock" src="./images/rock.png">
+                    </button>
+                    <button class="choice paper" alt="Paper" title="Paper" value="paper">
+                        <img alt="Paper" src="./images/paper.png">
+                    </button>
+                    <button class="choice scissors" alt="Scissors" title="Scissors" value="scissors">
+                        <img alt="Scissors" src="./images/scissors.png">
+                    </button>
+                </div>
+                <div class="choices computer">
+                    <div class="choice rock" alt="Rock" title="Rock">
+                        <img alt="Rock" src="./images/rock.png">
+                    </div>
+                    <div class="choice paper" alt="Paper" title="Paper">
+                        <img alt="Paper" src="./images/paper.png">
+                    </div>
+                    <div class="choice scissors" alt="Scissors" title="Scissors">
+                        <img alt="Scissors" src="./images/scissors.png">
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <a href="https://www.flaticon.com/free-icons/on-hold" title="on hold icons">On hold icons created by Cap Cool -
+            Flaticon</a>
+    </footer>
+
 </body>
+
 </html>

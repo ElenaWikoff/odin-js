@@ -62,8 +62,6 @@ function playRound(humanChoice, computerChoice) {
     console.log(message);
 }
 
-// playRound(humanSelection, computerSelection);
-
 /**
  * Play specified rounds of rock, paper, scissors.
  * @param {number} rounds 
@@ -86,4 +84,8 @@ function playGame(rounds) {
     }
 }
 
-playGame(5);
+const gameSpace = document.getElementById("gameSpace");
+const playerChoices = gameSpace.querySelector(".player");
+const choiceButtons = playerChoices.querySelectorAll(".choice");
+
+choiceButtons.forEach((btn) => btn.addEventListener);
