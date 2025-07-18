@@ -35,28 +35,28 @@ function getHumanChoice() {
     return result;
 }
 
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-    const human = humanChoice.trim()[0].toUpperCase() + humanChoice.trim().slice(1).toLowerCase();
+function playRound(playerChoice, computerChoice) {
+    let winner = "player"
+    const player = playerChoice.trim()[0].toUpperCase() + playerChoice.trim().slice(1).toLowerCase();
     const computer = computerChoice.trim()[0].toUpperCase() + computerChoice.trim().slice(1).toLowerCase();
-    let message = `It"s a tie! You both choose ${human}.`;
-    console.log(`${human} ${computer}`);
+    let message = `It"s a tie! You both choose ${player}.`;
 
     // Human wins else if human loses else tie.
-    if ((human === "Rock" && computer === "Scissors") ||
-        (human === "Paper" && computer === "Rock") ||
-        (human === "Scissors" && computer === "Paper")) {
-        humanScore++;
-        message = `You won! ${human} beats ${computer}.`
-    } else if ((human === "Rock" && computer === "Paper") ||
-        (human === "Paper" && computer === "Scissors") ||
-        (human === "Scissors" && computer === "Rock")) {
+    if ((player === "Rock" && computer === "Scissors") ||
+        (player === "Paper" && computer === "Rock") ||
+        (player === "Scissors" && computer === "Paper")) {
+        playerScore++;
+        message = `You won! ${player} beats ${computer}.`
+    } else if ((player === "Rock" && computer === "Paper") ||
+        (player === "Paper" && computer === "Scissors") ||
+        (player === "Scissors" && computer === "Rock")) {
         computerScore++;
-        message = `You lost! ${computer} beats ${human}.`
+        message = `You lost! ${computer} beats ${player}.`
     }
-    console.log(message);
+    showSubMessage(message);
 }
 
 /**
@@ -112,7 +112,8 @@ const handleSelection = (event) => {
     playerChoices.forEach((btn) => btn.removeEventListener("click", handleSelection));
 
     // Remove selection colors on new selection
-    resetChoices()
+    hideSubMessage();
+    resetChoices();
 
     // Handle Player Selection
     const playerChoice = event.target.value;
@@ -123,7 +124,7 @@ const handleSelection = (event) => {
     setTimeout(() => {
         showMessage("ROCK! PAPER!");
         setTimeout(() => {
-            showMessage("ROCK! PAPER! SCISSORS");
+            showMessage("ROCK! PAPER! SCISSORS!");
             // Handle computer selection
             const computerChoice = getComputerChoice();
             setChoice("computer", computerChoice); // Show computer choice as selected
@@ -145,9 +146,16 @@ function showMessage(text) {
 
 function hideMessage() {
     const message = document.querySelector(".message");
-    message.classList.remove("add");
+    message.classList.add("hidden");
 }
 
-// const newGame = (rounds) => {
+function showSubMessage(text) {
+    const submessage = document.querySelector(".submessage");
+    submessage.textContent = text;
+    submessage.classList.remove("hidden");
+}
 
-// }
+function hideSubMessage() {
+    const submessage = document.querySelector(".submessage");
+    submessage.classList.add("hidden");
+}

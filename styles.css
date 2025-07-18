@@ -98,7 +98,8 @@ main {
 
 .choices>button:focus,
 .choices>button:active,
-.choices>button:hover {
+.choices>button:hover,
+.choices>button.selected:hover {
     background-color: lightgoldenrodyellow;
 }
 
@@ -109,17 +110,22 @@ main {
     pointer-events: none;
 }
 
-.message {
+.message,
+.submessage {
     font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+.submessage {
+    font-size: 18px;;
 }
 
 #player.choices>button.selected,
 #player.choices>button.selected:focus,
-#player.choices>button.selected:active,
-#player.choices>button.selected:hover {
-    background-color: yellow;
+#player.choices>button.selected:active {
+    background-color: rgb(255, 255, 152);
 }
 
 #computer.choices>div.selected {
-    background-color: red;
+    background-color: coral;
 }
