@@ -16,24 +16,23 @@
     <main>
         <section class="app">
             <button id="startGame" class="btn-primary">Start Game</button>
-            <button id="startGame" class="btn-primary">Next Round</button>
             <div class="score">
                 <span class="number player">0</span>&nbsp;|&nbsp;<span class="number computer">0</span>
             </div>
-            <div class="message"></div>
+            <div class="message hidden">Hidden Message</div>
             <section id="gameSpace">
-                <div class="choices player">
-                    <button class="choice rock" alt="Rock" title="Rock" value="rock">
+                <div id="player" class="choices">
+                    <button id="rockButton" class="choice rock" alt="Rock" title="Rock" value="rock">
                         <img alt="Rock" src="./images/rock.png">
                     </button>
-                    <button class="choice paper" alt="Paper" title="Paper" value="paper">
+                    <button id="paperButton" class="choice paper" alt="Paper" title="Paper" value="paper">
                         <img alt="Paper" src="./images/paper.png">
                     </button>
-                    <button class="choice scissors" alt="Scissors" title="Scissors" value="scissors">
+                    <button id="scissorsButton" class="choice scissors" alt="Scissors" title="Scissors" value="scissors">
                         <img alt="Scissors" src="./images/scissors.png">
                     </button>
                 </div>
-                <div class="choices computer">
+                <div id="computer" class="choices">
                     <div class="choice rock" alt="Rock" title="Rock">
                         <img alt="Rock" src="./images/rock.png">
                     </div>

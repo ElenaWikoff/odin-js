@@ -62,6 +62,8 @@ function playRound(humanChoice, computerChoice) {
     console.log(message);
 }
 
+const rockButton = document.getElementById();
+
 /**
  * Play specified rounds of rock, paper, scissors.
  * @param {number} rounds 
