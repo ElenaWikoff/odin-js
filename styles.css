@@ -106,8 +106,20 @@ main {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .message {
     font-family: 'Courier New', Courier, monospace;
+}
+
+#player.choices>button.selected,
+#player.choices>button.selected:focus,
+#player.choices>button.selected:active,
+#player.choices>button.selected:hover {
+    background-color: yellow;
+}
+
+#computer.choices>div.selected {
+    background-color: red;
 }
