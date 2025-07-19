@@ -33,7 +33,6 @@ footer {
 
 main {
     flex: 1 1 0;
-    height: 100%;
     overflow: hidden;
 }
 
@@ -44,7 +43,23 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    padding: 16px;
+    margin: 12px;
+}
+
+#resetGame {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: lightblue;
+    border-color: lightskyblue;
+    font-weight: bold;
+}
+
+#resetGame:focus,
+#resetGame:active,
+#resetGame:hover {
+    background-color: lightskyblue;
 }
 
 .score {
@@ -65,7 +80,7 @@ main {
     display: flex;
     justify-content: space-around;
     gap: 64px;
-    height: 80%;
+    height: 70%;
     width: 100%;
 }
 

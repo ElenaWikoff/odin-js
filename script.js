@@ -35,14 +35,15 @@ function getHumanChoice() {
     return result;
 }
 
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = 4;
+let computerScore = 4;
+let gameOver = false;
 
 function playRound(playerChoice, computerChoice) {
-    let winner = "player"
+    let winner = "tie"
     const player = playerChoice.trim()[0].toUpperCase() + playerChoice.trim().slice(1).toLowerCase();
     const computer = computerChoice.trim()[0].toUpperCase() + computerChoice.trim().slice(1).toLowerCase();
-    let message = `It"s a tie! You both choose ${player}.`;
+    let message = `It's a tie! You both choose ${player}.`;
 
     // Human wins else if human loses else tie.
     if ((player === "Rock" && computer === "Scissors") ||
@@ -50,35 +51,16 @@ function playRound(playerChoice, computerChoice) {
         (player === "Scissors" && computer === "Paper")) {
         playerScore++;
         message = `You won! ${player} beats ${computer}.`
+        winner = "player";
     } else if ((player === "Rock" && computer === "Paper") ||
         (player === "Paper" && computer === "Scissors") ||
         (player === "Scissors" && computer === "Rock")) {
         computerScore++;
         message = `You lost! ${computer} beats ${player}.`
+        winner = "computer";
     }
     showSubMessage(message);
-}
-
-/**
- * Play specified rounds of rock, paper, scissors.
- * @param {number} rounds 
- */
-function playGame(rounds) {
-    for (let i = 0; i < rounds; i++) {
-        console.log(`Round ${i + 1}:`);
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        console.log(`Current Score: ${humanScore} ${computerScore}`);
-    }
-
-    if (humanScore > computerScore) {
-        console.log(`You Won! ${humanScore} ${computerScore}`);
-    } else if (humanScore < computerScore) {
-        console.log(`You Lost! ${humanScore} ${computerScore}`);
-    } else {
-        console.log(`You Tied! ${humanScore} ${computerScore}`);
-    }
+    return winner;
 }
 
 function getChoices(player) {
@@ -107,6 +89,11 @@ function setChoice(player, choice) {
 }
 
 const handleSelection = (event) => {
+    if (gameOver) {
+        gameOver = false;
+        resetGame();
+    }
+
     // Disable click events while round playing out
     const playerChoices = getChoices("player");
     playerChoices.forEach((btn) => btn.removeEventListener("click", handleSelection));
@@ -130,12 +117,43 @@ const handleSelection = (event) => {
             setChoice("computer", computerChoice); // Show computer choice as selected
 
             // Calculate winner
-            playRound(playerChoice, computerChoice);
+            const winner = playRound(playerChoice, computerChoice);
+
+            // Set score
+            updateScores();
+
+            checkWinner();
 
             // Re-enable click events after round ends
             playerChoices.forEach((btn) => btn.addEventListener("click", handleSelection));
         }, 1000);
     }, 1000);
+}
+
+function checkWinner() {
+    if (playerScore >= 5 || computerScore >= 5) {
+        if (playerScore > computerScore) {
+            showMessage(`You Won the Game!`);
+        } else {
+            showMessage(`You Lost the Game!`);
+        }
+        showSubMessage("Make selection to start a new game.");
+        gameOver = true;
+    }
+}
+
+function updateScores() {
+    const scoreBoard = document.querySelector(".score");
+    const player = scoreBoard.querySelector(".player");
+    player.textContent = playerScore;
+    const computer = scoreBoard.querySelector(".computer");
+    computer.textContent = computerScore;
+}
+
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+    updateScores();
 }
 
 function showMessage(text) {
@@ -158,4 +176,11 @@ function showSubMessage(text) {
 function hideSubMessage() {
     const submessage = document.querySelector(".submessage");
     submessage.classList.add("hidden");
+}
+
+function resetGame() {
+    resetScore();
+    resetChoices();
+    hideMessage();
+    hideSubMessage();
 }
