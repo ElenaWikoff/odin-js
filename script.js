@@ -35,8 +35,8 @@ function getHumanChoice() {
     return result;
 }
 
-let playerScore = 4;
-let computerScore = 4;
+let playerScore = 0;
+let computerScore = 0;
 let gameOver = false;
 
 function playRound(playerChoice, computerChoice) {
